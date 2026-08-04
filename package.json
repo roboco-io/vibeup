@@ -1,0 +1,15 @@
+{
+  "name": "vibeup",
+  "version": "1.0.0",
+  "description": "Vibe Up: 바이브 코딩 시대의 Shape Up — vibeup.roboco.io",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}
