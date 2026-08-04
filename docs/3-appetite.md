@@ -1,38 +1,37 @@
-# 3장: 애피타이트의 재정의
+# Redefining Appetite
 
-원작에서 애피타이트(appetite)는 이 문제에 쓸 의향이 있는 시간의 상한을 뜻합니다 ([3장: 경계 정하기](https://basecamp.com/shapeup/1.2-chapter-03)). 2주냐 6주냐를 먼저 정하고, 그 안에 들어오는 해결책을 찾습니다.
+In the original, appetite means the upper bound of time you are willing to spend on a problem ([Chapter 3: Set Boundaries](https://basecamp.com/shapeup/1.2-chapter-03)). You decide first whether this is a two-week or a six-week problem, and then you look for a solution that fits inside it.
 
-이것이 추정치(estimate)와 갈라지는 지점은 질문의 방향입니다. 추정치는 "이걸 만들면 얼마나 걸릴까"를 묻습니다. 디자인에서 출발해 숫자로 끝나므로, 해결책을 이미 정해 놓은 다음에야 답할 수 있습니다. 애피타이트는 "이 문제에 얼마나 쓸 가치가 있나"를 묻습니다. 숫자에서 출발해 디자인으로 끝나므로, 해결책을 정하기 전에 답해야 합니다. 그래서 애피타이트는 예측이 아니라 결정이고, 그 자리에서 곧바로 셰이핑(shaping)을 밀어붙이는 창의적 제약이 됩니다.
+Where this parts ways with an estimate is the direction of the question. An estimate asks, "how long will it take to build this?" It starts from a design and ends in a number, so you can only answer it once you have already settled on a solution. An appetite asks, "how much is this problem worth spending?" It starts from a number and ends in a design, so it must be answered before the solution is chosen. Appetite is therefore not a prediction but a decision — and, right there on the spot, a creative constraint that forces shaping.
 
-## 시간 예산의 한계
+## The Limits of a Time Budget
 
-이 장치가 규율로 작동했던 것은 시간이 비쌌기 때문입니다. "이건 6주짜리가 아니다"라는 판정에는 힘이 실려 있었습니다. 6주를 쓰겠다는 말은 팀 하나가 다른 모든 것을 하지 않겠다는 뜻이었고, 듣는 사람 모두가 그 무게를 알고 있었습니다.
+This device worked as discipline because time was expensive. The verdict "this is not a six-week thing" carried weight. Saying you would spend six weeks meant one team would not be doing everything else, and everyone in the room knew what that weighed.
 
-이제 같은 문장을 말해 보면 힘이 빠져 있습니다. 만드는 데 정말로 하루면 되는 기능에 대고 "우리의 애피타이트는 2주다"라고 말하는 것은 아무것도 막지 못합니다. 상한 아래로 한참 내려와 있으니 통과입니다. 그리고 이 지점에서 가장 곤란한 반문이 들어옵니다. "하루면 만드는데 왜 안 만들어?" 시간 예산에는 여기에 답할 언어가 없습니다. 반문의 전제가 참이기 때문입니다. 정말 하루면 만듭니다. 문제는 하루가 그 기능이 청구할 비용의 전부가 아니라는 데 있는데, 시간이라는 단위로는 나머지 청구서가 보이지 않습니다.
+Say the same sentence today and the force has drained out of it. Declaring "our appetite is two weeks" for a feature that genuinely takes a day to build stops nothing. It is well under the ceiling, so it passes. And this is where the most awkward rebuttal arrives: "if it only takes a day, why not build it?" A time budget has no language for answering that, because the premise of the rebuttal is true. It really does take a day. The problem is that the day is not the whole of what the feature will bill you for — and in units of time, the rest of the invoice is invisible.
 
-## 세 가지 예산으로
+## Into Three Budgets
 
-그렇다면 바꿔야 할 것은 장치가 아니라 단위입니다. 앞 장에서 이름 붙인 세 병목이 그대로 세 개의 예산이 됩니다.
+What has to change, then, is not the device but the unit. The three bottlenecks named in the previous chapter become three budgets directly.
 
-**검증 예산**은 "우리가 책임지고 확인할 수 있는 범위가 어디까지인가"를 묻습니다. 하루 만에 붙인 결제 예외 처리가 분기 스무 개를 만들어 냈는데 그것을 끝까지 따라 읽을 사람이 아무도 없다면, 구현에 든 시간이 얼마든 이 예산은 이미 초과된 것입니다. 확인하지 못한 채 내보낸 것은 만든 것이 아니라 미룬 것입니다.
+**The verification budget** asks, "how far does what we can check and stand behind actually extend?" If a payment edge case bolted on in a day produced twenty branches and there is no one who will read all of them through, then no matter how little time the implementation took, this budget is already blown. What goes out unchecked has not been built; it has been deferred.
 
-**주의력 예산**은 "이 문제가 우리의 집중을 얼마나 차지할 가치가 있는가"를 묻습니다. 만드는 데는 반나절이지만 그 뒤로 몇 주 동안 팀 논의의 절반을 가져가는 설정 화면이 있습니다. 구현 청구서는 반나절이고 주의력 청구서는 몇 주입니다. 후자가 훨씬 비싼데도 아무 데도 적히지 않습니다.
+**The attention budget** asks, "how much of our focus is this problem worth occupying?" There is always some settings screen that takes half a day to build and then takes half of the team's discussion for weeks afterward. The implementation invoice is half a day; the attention invoice is weeks. The latter is far more expensive, and it is written down nowhere.
 
-**복잡도 예산**은 "이 기능이 늘리는 표면적을 우리가 계속 감당할 의향이 있는가"를 묻습니다. 외부 서비스 연동 하나를 이틀 만에 붙였다면, 그 이틀 뒤로는 API 버전이 바뀔 때마다, 그쪽에 장애가 날 때마다, 이 근처를 고치려는 사람이 나올 때마다 조금씩 나눠 내는 비용이 따라옵니다.
+**The complexity budget** asks, "are we willing to keep carrying the surface area this feature adds?" If you wired up one external service integration in two days, then after those two days come costs paid out in small installments every time the API version changes, every time that service has an outage, and every time someone tries to change something nearby.
 
-셋 중 하나만 초과해도 "만들지 않는다"는 정당한 답이 됩니다. 앞의 반문에 이제 답할 수 있습니다. 만드는 데 하루가 드는 것은 맞습니다. 그런데 우리에게는 그것을 확인할 시간도, 그것이 넓혀 놓을 표면을 계속 감당할 여력도 없습니다.
+Exceeding any one of the three makes "we are not building it" a legitimate answer. The earlier rebuttal now has a reply. Yes, it takes a day to build. But we have neither the time to check it nor the capacity to keep carrying the surface it widens.
 
-## VDLC의 이중 통화 애피타이트
+## VDLC's Dual-Currency Appetite
 
-이 재정의를 실무에서 쓰는 예산 서식으로 구현한 것이 VDLC의 이중 통화 애피타이트입니다. 피치(pitch)마다 두 가지 통화를 숫자로 적습니다. 인간 주의력 예산은 셰이핑 N시간과 검증 N시간으로 나누어 쓰고, 컴퓨트 예산은 토큰이나 세션의 상한으로 씁니다 ([VDLC 주간 사이클](https://vdlc.roboco.io/ko/cycle)).
+VDLC's dual-currency appetite is this redefinition implemented as a budget form you actually fill in. Every pitch writes down two currencies as numbers. The human attention budget is split into N hours of shaping and N hours of verification; the compute budget is written as a ceiling on tokens or sessions ([VDLC weekly cycle](https://vdlc.roboco.io/cycle)).
 
-세 예산이 두 통화로 접히는 방식은 이렇습니다. 검증 예산은 인간 주의력 예산 안의 "검증 N시간" 항목으로 들어갑니다. 무엇을 만들지 고르는 집중과 만들어진 것을 확인하는 집중은 결국 같은 사람의 같은 하루에서 나오므로, 따로 세는 것보다 한 통화로 묶는 편이 실제로 소진되는 방식에 맞습니다. 복잡도 예산은 컨텍스트 부채(context debt), 즉 코드에는 있지만 의도를 적은 문서에는 없는 결정을 관리하는 일로 흡수됩니다. 감당해야 할 표면적이 넓어졌다는 것은 곧 남이 읽어 복원할 수 없는 결정이 늘었다는 뜻이기 때문입니다. 남은 컴퓨트 예산은 사람 쪽 자원이 아니라 돈으로 늘어나는 자원이지만, 그럼에도 상한을 적어 둡니다. 예상보다 빨리 타들어 가는 컴퓨트는 그 자체로 이 일이 셰이핑된 것보다 어렵다는 신호이기 때문입니다.
+Here is how three budgets fold into two currencies. The verification budget goes into the "N hours of verification" line inside the human attention budget. The focus that goes into choosing what to build and the focus that goes into checking what got built come out of the same person's same day, so bundling them into one currency matches how they are actually consumed better than counting them separately. The complexity budget is absorbed into managing context debt — decisions that live in the code but not in any document recording the intent. A widened surface area to carry is, in effect, an increase in decisions no one else can read back and reconstruct. The remaining compute budget is a resource that grows with money rather than a human one, but you write down a ceiling for it anyway. Compute burning faster than expected is itself a signal that the work is harder than it was shaped to be.
 
-## 변하지 않는 원리
+## The Principle That Doesn't Change
 
-단위는 바뀌었지만 원리는 그대로입니다. 얼마나 걸릴지로 범위가 결정되는 것이 아니라, 얼마나 원하는지로 범위가 결정됩니다.
+The unit changed; the principle did not. Scope is not determined by how long it will take, but by how much you want it.
 
-추정치와의 대비도 그대로 유효합니다. 오히려 지금은 추정치를 얻기가 너무 쉬워져서 이 구분이 더 중요해졌습니다. 에이전트에게 물으면 몇 초 만에 계획과 소요 시간이 돌아옵니다. 그럴듯하고, 자신 있고, 때로는 맞습니다. 그러나 그것은 여전히 추정치입니다. 디자인에서 출발해 숫자로 끝나는 답이고, 이미 정해진 해결책을 전제한 답입니다. AI가 이 일을 두 시간이라 하든 이틀이라 하든, 우리가 여기에 쓸 의향이 있는 양의 상한은 그 숫자가 아니라 우리의 애피타이트입니다.
+The contrast with estimates holds just as well. If anything, estimates have become so easy to obtain that the distinction matters more now. Ask an agent and a plan with a duration comes back in seconds. It is plausible, it is confident, and sometimes it is right. But it is still an estimate — an answer that starts from a design and ends in a number, an answer premised on a solution already chosen. Whether the AI says two hours or two days, the ceiling on what we are willing to spend here is not that number but our appetite.
 
-그래서 원작의 "고정된 시간, 가변 스코프(fixed time, variable scope)"는 폐기되는 것이 아니라 한 단계 일반화됩니다. "고정된 예산, 가변 스코프"입니다. 고정되는 것이 시간 하나에서 세 자원으로 늘었을 뿐, 예산을 먼저 못 박고 그 안에 들어오도록 범위를 깎는다는 동작은 바뀌지 않습니다. 그렇다면 그 깎는 일, 예산 안에 들어오는 해결책의 윤곽을 미리 잡는 일은 이제 누가 합니까. 다음 장의 주제입니다.
-
+So the original's "fixed time, variable scope" is not discarded but generalized one step: "fixed budget, variable scope." All that has changed is that what gets fixed went from time alone to three resources; the motion of nailing down the budget first and then carving scope until it fits is unchanged. Which raises the question of who does that carving — who now sketches the outline of a solution that fits inside the budget. That is the subject of the next chapter.

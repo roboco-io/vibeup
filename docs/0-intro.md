@@ -1,32 +1,31 @@
-# 서문: 왜 지금 다시 Shape Up인가
+# Introduction: Why Shape Up Again, Now
 
-2019년에 나온 Shape Up은 한 문장으로 줄이면 "6주라는 시간 예산 안에서 무엇을 만들지 먼저 다듬는다"는 책이었습니다. Basecamp는 이 일에 시간이 얼마나 걸릴지 추정치(estimate)를 내는 대신, 이 문제에 시간을 얼마나 쓸 의향이 있는지를 먼저 정하는 애피타이트(appetite)를 세웠습니다. 그리고 그 예산 안에 들어맞도록 해결책의 윤곽을 미리 잡는 작업을 셰이핑(shaping)이라 부르고, 그 결과물인 피치(pitch)를 베팅 테이블(betting table)에 올려 다음 사이클(cycle)을 걸었습니다. 시간을 고정하고 스코프(scope)를 조정한다는 원칙이 이 모든 장치를 관통합니다. 원작의 전체 그림은 [1장: 소개](https://basecamp.com/shapeup/0.3-chapter-01)에 정리되어 있습니다.
+Shape Up, published in 2019, was a book that reduces to a single sentence: decide what to build, in refined form, inside a fixed budget of six weeks. Instead of producing an estimate of how long a piece of work would take, Basecamp set an appetite — a decision about how much time the problem was worth spending. The work of sketching the outline of a solution so that it fits inside that budget was called shaping, and the resulting pitch went to the betting table, where the next cycle was wagered. One principle runs through every one of these devices: fix the time, and flex the scope. The original's full picture is laid out in [Chapter 1: Introduction](https://basecamp.com/shapeup/0.3-chapter-01).
 
-이 가이드 『Vibe Up』은 그 책이 바이브 코딩(vibe coding) 이후에도 유효한지, 유효하다면 무엇이 달라지는지를 다룹니다. 결론부터 말하면 원작의 원리는 대부분 살아남지만, 그 원리가 붙어 있던 숫자와 장치는 상당수 의미가 달라집니다. 이 가이드는 그 경계선을 긋는 일을 합니다.
+This guide, *Vibe Up*, asks whether that book still holds after vibe coding — and if it does, what changes. The short answer is that most of the original's principles survive, while a good many of the numbers and mechanisms they were attached to no longer mean what they used to. Drawing that line is what this guide does.
 
-## 구현이 싸지면 셰이핑은 필요 없어질까
+## If Implementation Gets Cheap, Does Shaping Become Unnecessary?
 
-가장 먼저 떠오르는 직관은 이런 것입니다. 계획이 필요했던 이유는 만드는 일이 비쌌기 때문이다. 잘못 만들면 몇 주가 날아가니까 무엇을 만들지 미리 다듬었던 것이다. 그런데 구현 비용이 0에 수렴한다면, 다듬을 시간에 그냥 만들어 보는 편이 빠르지 않은가. 그렇다면 셰이핑도, 애피타이트도, 6주라는 고정된 기간도 함께 사라져야 하지 않겠는가.
+The first intuition goes something like this. Planning mattered because building was expensive. Getting it wrong burned weeks, so you refined what to build before you built it. But if the cost of implementation converges on zero, isn't it faster to just build the thing in the time you would have spent refining it? And if so, shouldn't shaping, appetite, and the fixed six weeks all disappear together?
 
-이 가이드의 답은 반대입니다. **병목은 사라지지 않고 이동합니다.** 만드는 비용이 내려간 만큼 만들어진 것을 확인하고 책임지는 비용이 올라가고, 무엇을 만들지 고르는 인간의 주의력이 상대적으로 더 희소해집니다. 병목이 옮겨 갔다면 프로세스도 옮겨 간 자리에 다시 세워야 합니다. 원리를 폐기할 때가 아니라 원리가 겨누는 과녁을 다시 맞출 때라는 것이 이 가이드의 입장입니다.
+This guide argues the opposite. **Bottlenecks do not vanish; they move.** As the cost of building falls, the cost of checking and taking responsibility for what got built rises, and the human attention needed to choose what to build becomes relatively scarcer. If the bottleneck has moved, the process has to be rebuilt where it landed. This is not the moment to discard the principles — it is the moment to re-aim them.
 
-흥미롭게도 이 재해석을 먼저 예고한 쪽은 원작 진영입니다. Basecamp 공동 창업자 David Heinemeier Hansson은 2026년 4월 인터뷰에서 "Shape Up이 기술한 2개월 사이클의 종말"을 직접 언급하며, AI로 개발이 빨라진 지금 그 타임라인이 느리게 느껴진다고, 그래서 방법론을 다시 써야 한다고 말했습니다 ([Pragmatic Engineer 인터뷰](https://newsletter.pragmaticengineer.com/p/dhhs-new-way-of-writing-code)). 다만 그가 함께 말한 것은 품질과 장인정신의 기준은 그대로라는 점, 그리고 에이전트로 계속 출시하는 도파민 루프가 오히려 번아웃 위험을 키운다는 경고였습니다. 바꿔야 할 것과 붙들어야 할 것이 나뉘어 있다는 뜻입니다. 이 가이드는 그 분리선을 따라갑니다.
+Tellingly, the first hint of this reinterpretation came from the original camp itself. In an April 2026 interview, Basecamp co-founder David Heinemeier Hansson spoke directly of "the end of the two-month cycle Shape Up described," saying that now that AI has made development faster, that timeline feels slow, and the methodology therefore needs to be rewritten ([Pragmatic Engineer interview](https://newsletter.pragmaticengineer.com/p/dhhs-new-way-of-writing-code)). What he said alongside it, though, was that the bar for quality and craftsmanship has not moved, and that the dopamine loop of shipping continuously with agents actually raises the risk of burnout. In other words, there is a line between what must change and what must be held onto. This guide follows that line.
 
-## 이 가이드의 구성
+## How This Guide Is Organized
 
-전체는 3부, 일곱 장입니다.
+Three parts, seven chapters.
 
-- **1부: 무엇이 변했나** — 구현 비용이 실제로 어디까지 무너졌고 무엇은 그대로인지 살펴본 뒤, 새로 희소해진 세 자원을 짚습니다.
-- **2부: 변하지 않는 것** — 애피타이트와 셰이핑이 왜 폐기되지 않고 오히려 무거워지는지, 대신 그 내용물이 어떻게 재정의되는지 다룹니다.
-- **3부: 새로운 사이클** — 6주 사이클과 2주 쿨다운(cool-down)이 어떤 리듬으로 압축되는지, 베팅과 완료 판정이 어떻게 다시 쓰이는지 살펴봅니다.
+- **Part 1: What Changed** — how far the cost of implementation has actually collapsed and what has not moved, followed by the three resources that have newly become scarce.
+- **Part 2: What Doesn't Change** — why appetite and shaping are not discarded but in fact grow heavier, and how their contents get redefined instead.
+- **Part 3: The New Cycle** — the rhythm the six-week cycle and two-week cool-down compress into, and how betting and the definition of done get rewritten.
 
-Shape Up을 읽지 않았어도 이 가이드는 따라올 수 있습니다. 원작 개념이 처음 나올 때마다 짧은 설명을 붙이고, [무료로 공개된 영문 원서](https://basecamp.com/shapeup)의 해당 장으로 링크를 걸어 두었습니다. 원작을 이미 아는 분이라면 각 장에서 "원작의 어떤 장치가 어떤 방향으로 뒤집히는가"만 따라 읽어도 좋습니다.
+You can follow this guide without having read Shape Up. Each time an idea from the original appears for the first time, it comes with a short explanation and a link to the relevant chapter of the [free web edition](https://basecamp.com/shapeup). If you already know the original, you can read each chapter simply for the answer to "which device from the book gets inverted, and in which direction."
 
-## 이 가이드가 다루지 않는 것
+## What This Guide Is Not About
 
-특정 AI 도구의 사용법은 다루지 않습니다. 어떤 에이전트를 어떤 설정으로 돌릴지는 반년이면 바뀌고, 그 층위의 지식은 이 가이드가 이야기하려는 것과 수명이 다릅니다. 도구는 사례로만 등장합니다.
+It is not about how to use any particular AI tool. Which agent you run under which settings changes within six months, and knowledge at that layer has a different shelf life than what this guide is trying to say. Tools appear only as examples.
 
-원작을 대체하려는 책도 아닙니다. 이 가이드는 Shape Up을 읽는 새로운 렌즈에 가깝습니다. 여기서 "달라진다"고 말하는 대목도 원작을 읽어 두었을 때 훨씬 선명해집니다.
+Nor is it meant to replace the original. This guide is closer to a new lens for reading Shape Up. Even the passages where it says "this changes" come into much sharper focus if you have read the book.
 
-마지막으로, 실무 프로세스의 완전한 정의는 이 가이드의 몫이 아닙니다. 그 자리는 로보코의 [VDLC(Vibe-Driven Development Lifecycle)](https://vdlc.roboco.io)가 맡고 있습니다. 이 가이드는 원작에서 VDLC로 건너가는 다리입니다. 왜 사이클이 짧아지는지, 왜 검증이 별도 단계로 승격되는지를 설명한 다음, 그래서 실제로 어떻게 운영하는지는 VDLC의 정의로 넘깁니다. 다리 위에서 목적지를 다시 짓지는 않겠습니다.
-
+Finally, a complete definition of the working process is not this guide's job. That role belongs to Roboco's [VDLC (Vibe-Driven Development Lifecycle)](https://vdlc.roboco.io). This guide is the bridge from the original to VDLC. It explains why the cycle gets shorter and why verification is promoted to a stage of its own, and then hands off the question of how you actually run it to VDLC's definitions. It will not rebuild the destination while standing on the bridge.

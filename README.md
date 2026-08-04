@@ -1,8 +1,10 @@
-# Vibe Up — 바이브 코딩 시대의 Shape Up
+# Vibe Up — Shape Up for the Vibe-Coding Era
 
-Basecamp의 [Shape Up](https://basecamp.com/shapeup)(Ryan Singer)을 바이브 코딩 시대에 맞춰 재구성한 한국어 가이드입니다.
+Basecamp의 [Shape Up](https://basecamp.com/shapeup)(Ryan Singer)을 바이브 코딩 시대에 맞춰 재구성한 가이드입니다.
 
 **웹사이트: https://vibeup.roboco.io**
+
+영어(기본) · [한국어](https://vibeup.roboco.io/ko/) · [日本語](https://vibeup.roboco.io/ja/) 3개 언어를 지원합니다.
 
 ## 개요
 

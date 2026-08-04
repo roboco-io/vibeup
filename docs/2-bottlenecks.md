@@ -1,42 +1,41 @@
-# 2장: 새로운 세 가지 병목
+# The Three New Bottlenecks
 
-공장에서 한 생산 라인의 속도를 두 배로 올리면 무슨 일이 벌어질까요. 전체 산출량이 두 배가 되는 일은 거의 없습니다. 대신 그 라인 뒤쪽에 재고가 쌓이기 시작합니다. 병목은 사라진 것이 아니라 다음 공정으로 옮겨 간 것이고, 이제 공장의 속도는 그 다음 공정이 결정합니다.
+What happens in a factory when you double the speed of one production line? Total output almost never doubles. Instead, inventory starts piling up behind that line. The bottleneck did not disappear; it moved to the next station, and the factory's pace is now set by whatever happens there.
 
-앞 장에서 남긴 질문이 이것이었습니다. 구현 비용이 내려갔다면 그 비용은 어디로 갔는가. 이 장에서는 그 재고가 쌓인 자리 세 곳을 하나씩 짚습니다. 이후 장들은 이 세 이름을 정의 없이 그대로 부르게 됩니다.
+That was the question left hanging at the end of the last chapter: if the cost of implementation went down, where did it go? This chapter walks through the three places where the inventory piled up. Later chapters will use these three names without redefining them.
 
-## 첫 번째 병목: 검증과 리뷰
+## The First Bottleneck: Verification and Review
 
-앞 장에서 인용한 Faros AI의 데이터를 조금 더 펼쳐 보면 이동의 흔적이 그대로 드러납니다. AI 도입도가 높은 팀에서 머지된 PR은 98% 늘었고 완료된 작업은 21% 늘었습니다. 그런데 같은 팀에서 PR 리뷰에 걸린 시간은 91% 늘었고, 평균 PR 크기는 154% 커졌으며, 버그는 9% 늘었습니다 ([Faros AI](https://www.faros.ai/blog/best-ai-coding-agents-2026)).
+Unfold the Faros AI data cited in the previous chapter a little further and the trace of the move is right there. On teams with high AI adoption, merged PRs rose 98% and completed work items rose 21%. On those same teams, time spent on PR review rose 91%, average PR size grew 154%, and bugs rose 9% ([Faros AI](https://www.faros.ai/blog/best-ai-coding-agents-2026)).
 
-숫자들을 나란히 놓으면 이야기가 분명해집니다. 생성 쪽에서 두 배로 벌어들인 것이 리뷰 큐에서 상당 부분 도로 지출되고 있습니다. 게다가 들어오는 PR은 두 배 많으면서 개당 크기는 두 배 반이라, 한 사람이 읽어야 할 코드의 총량은 훨씬 가파르게 늘어납니다. 조직 차원의 이득이 리뷰라는 한 지점에 흡수되는 구조입니다.
+Line the numbers up and the story is clear. Much of what was earned twofold on the generation side is being spent right back in the review queue. On top of that, the incoming PRs are twice as numerous and two and a half times as large each, so the total volume of code one person has to read climbs far more steeply. The structure is one where organizational gains get absorbed at a single point: review.
 
-더 곤란한 것은 읽는 일 자체가 어려워졌다는 점입니다. 사람이 쓴 코드는 서툴면 서툰 티가 납니다. 반면 **AI가 쓴 코드는 대충 읽으면 통과할 만큼 그럴듯해서, 오히려 리뷰를 더 어렵게 만듭니다**. 틀린 곳이 어색해 보이지 않기 때문에, 잘못된 가정이나 빠진 예외 처리를 잡아내려면 문장을 훑는 것이 아니라 의도를 따라가며 읽어야 합니다. 한 조사에서 시니어 개발자들은 AI가 생성한 코드 한 건을 리뷰하는 데 평균 4.3분을 쓴 반면 사람이 쓴 코드에는 1.2분을 썼습니다 ([LogRocket](https://blog.logrocket.com/ai-coding-tools-shift-bottleneck-to-review/)). 같은 양을 읽는 데 세 배 넘는 주의력이 듭니다.
+The more awkward part is that the reading itself has gotten harder. Code written by a person shows its clumsiness when it is clumsy. **Code written by AI, by contrast, is plausible enough to pass a skim — which is exactly what makes it harder to review.** Because the wrong parts do not look wrong, catching a bad assumption or a missing edge case requires reading along the intent rather than scanning the prose. In one survey, senior developers spent an average of 4.3 minutes reviewing a single piece of AI-generated code against 1.2 minutes for human-written code ([LogRocket](https://blog.logrocket.com/ai-coding-tools-shift-bottleneck-to-review/)). Reading the same amount takes more than three times the attention.
 
-즉 생성이 싸진 만큼 검증이 자동으로 싸지지는 않았습니다. 오히려 단위당 비용이 올라간 상태에서 물량이 두 배가 된 것입니다.
+So verification did not automatically get cheaper just because generation did. If anything, the per-unit cost went up while the volume doubled.
 
-## 두 번째 병목: 주의력과 집중
+## The Second Bottleneck: Attention and Focus
 
-두 번째 자원은 무엇을 만들지 고르는 사람의 주의력입니다.
+The second resource is the human attention that goes into choosing what to build.
 
-만드는 데 이틀이 걸리던 시절에는 아이디어 목록이 저절로 걸러졌습니다. 대부분의 아이디어는 착수하기도 전에 비용을 견디지 못하고 탈락했고, 그 탈락이 사실상 우선순위 결정을 대신해 주었습니다. 이제 그 필터가 사라졌습니다. 웬만한 아이디어는 오후 한나절이면 형태를 갖추기 때문에, "만들 수 있는가"라는 질문이 더 이상 아무것도 걸러 주지 않습니다. 무엇이든 만들 수 있게 되면 **무엇을 만들지 않을 것인가**가 결정의 거의 전부가 됩니다.
+Back when building took two days, the idea list filtered itself. Most ideas could not survive their own cost and fell away before anyone started, and that attrition effectively made the prioritization decision for you. That filter is gone now. Any halfway reasonable idea takes shape in an afternoon, so the question "can we build this?" no longer screens out anything at all. When anything can be built, **what not to build** becomes nearly the whole of the decision.
 
-여기에 더 위험한 사정이 하나 붙습니다. 만드는 일이 재미있어졌다는 것입니다. 서문에서 짧게 짚었던 David Heinemeier Hansson의 경고가 이 자리에서 본론이 됩니다. 그가 지목한 것은 도구의 품질이 아니라 도구가 만들어 내는 리듬이었습니다. 출력이 몇 초 만에 돌아오는 환경에서는 다음 프롬프트를 넣는 행위 자체가 보상이 되고, 그렇게 형성된 도파민 루프는 중독적으로 작동해 번아웃 위험을 오히려 키운다는 것입니다 ([Pragmatic Engineer 인터뷰](https://newsletter.pragmaticengineer.com/p/dhhs-new-way-of-writing-code)). 멈추지 못하는 상태에서 가장 먼저 밀려나는 것이 "이걸 왜 만들고 있는가"를 묻는 시간입니다.
+There is a more dangerous wrinkle attached to this: building has become fun. David Heinemeier Hansson's warning, touched on briefly in the introduction, becomes the main point here. What he singled out was not the quality of the tools but the rhythm they produce. In an environment where output comes back within seconds, the act of entering the next prompt is itself the reward, and the dopamine loop that forms works addictively — raising, rather than lowering, the risk of burnout ([Pragmatic Engineer interview](https://newsletter.pragmaticengineer.com/p/dhhs-new-way-of-writing-code)). The first thing pushed aside when you cannot stop is the time spent asking why you are building this at all.
 
-반대편 추를 다는 사람은 그의 동업자입니다. Jason Fried는 속도도, 커밋 수도, 투입한 인원 수도, 그 인원에 에이전트를 포함하더라도, 제품을 본질적으로 더 낫게 만들지는 않는다고 말합니다 ([37signals](https://37signals.com/podcast/bring-your-ai-agents/)). 더 많이 만든 제품이 더 좋은 제품이라는 보장은 어디에도 없습니다. 그런데 지금의 도구는 더 많이 만드는 쪽으로만 저항을 없애 줍니다. 골라내는 쪽의 저항은 그대로이고, 골라내는 일을 하는 자원은 하루에 몇 시간뿐인 사람의 집중력입니다.
+The counterweight comes from his business partner. Jason Fried argues that speed, commit counts, and headcount — even headcount that includes agents — do not make a product fundamentally better ([37signals](https://37signals.com/podcast/bring-your-ai-agents/)). Nothing guarantees that a product built more is a product built better. And yet today's tools remove friction only on the side of building more. The friction on the side of selecting stays where it was, and the resource that does the selecting is a person's focus, of which there are only a few hours a day.
 
-## 세 번째 병목: 복잡도 부채
+## The Third Bottleneck: Complexity Debt
 
-세 번째는 시간이 지나야 청구서가 도착하는 항목입니다.
+The third is the item whose invoice arrives only after time has passed.
 
-"코드는 자산이 아니라 부채"라는 오래된 명제가 있습니다. 코드는 가지고 있는 것만으로 값이 나갑니다. 읽히고, 이해되고, 의존성을 따라가고, 취약점이 발견되면 갱신되어야 합니다. 생성이 비싸던 시절에는 이 명제가 다소 수사에 가까웠습니다. 만드는 일이 어려웠기 때문에 만들어지는 양 자체가 자연스럽게 제한되었고, 부채는 감당할 수 있는 속도로만 쌓였습니다.
+There is an old proposition that code is a liability, not an asset. Code costs you something merely by existing. It has to be read, understood, traced through its dependencies, and updated when a vulnerability turns up. Back when generation was expensive, this proposition was somewhat rhetorical. Because building was hard, the volume built was naturally limited, and debt accumulated only as fast as you could carry it.
 
-생성이 싸지면 축적도 싸집니다. 그리고 축적된 것을 유지하는 비용은 함께 싸지지 않습니다. 20분 만에 붙인 기능 하나가 남기는 것은 그 20분이 아니라, 앞으로 그 코드가 살아 있는 내내 지불할 유지보수와 보안 갱신, 그리고 이 시스템을 이해하려는 모든 사람이 추가로 감당할 인지 부하입니다. 다음에 이 근처를 고치려는 쪽은 그만큼 넓어진 표면 위에서 판단해야 합니다. 몇 달 뒤의 자신일 수도, 에이전트일 수도 있습니다.
+When generation gets cheap, accumulation gets cheap. The cost of maintaining what accumulated does not get cheap alongside it. What a feature bolted on in twenty minutes leaves behind is not those twenty minutes but the maintenance and security updates payable for as long as that code stays alive, plus the extra cognitive load carried by everyone who ever tries to understand this system. Whoever next tries to change something nearby has to make judgments across a correspondingly wider surface. That may be you a few months from now, or an agent.
 
-여기에는 앞의 두 병목으로 되돌아가는 고리도 있습니다. 시스템이 복잡할수록 변경 하나를 리뷰하는 데 필요한 맥락이 늘어나고, 무엇을 만들지 판단할 때 고려해야 할 상호작용도 늘어납니다. 쉽게 만든 것이 나중에 검증을 더 비싸게 만들고 주의력을 더 많이 먹습니다. 이 항목에 대해서는 앞의 두 병목처럼 인용할 만한 단단한 수치가 아직 없습니다. 다만 축적 속도만 몇 배로 올라가고 상환 속도는 그대로라는 구조는 수치 없이도 분명합니다.
+There is also a loop here running back to the first two bottlenecks. The more complex the system, the more context a single change requires to review, and the more interactions have to be weighed when deciding what to build. What was easy to make later makes verification more expensive and eats more attention. For this item there is not yet a solid figure worth citing the way there is for the other two. But the structure — accumulation speeding up several times over while repayment speed stays put — is clear enough without numbers.
 
-## 세 병목의 공통점
+## What the Three Have in Common
 
-세 자원을 나란히 놓으면 공통점이 하나 보입니다. 셋 다 사람 쪽에 있고, 셋 다 유한합니다. 컴퓨트는 돈을 더 내면 늘어나지만 리뷰할 수 있는 주의력, 판단에 쓸 수 있는 집중, 시스템을 머릿속에 담아 둘 수 있는 용량은 예산을 늘린다고 늘어나지 않습니다. 병목이 옮겨 간 자리는 결국 확장되지 않는 자원 위였습니다.
+Set the three resources side by side and one thing they share stands out. All three sit on the human side, and all three are finite. Compute grows if you pay more, but the attention available for review, the focus available for judgment, and the capacity to hold a system in your head do not grow when you raise the budget. The place the bottleneck moved to turned out to be a resource that does not scale.
 
-그리고 바로 여기서 Shape Up이 다시 등장합니다. 원작은 처음부터 유한한 자원을 예산으로 다루는 법에 관한 책이었습니다. 그 예산을 세우는 장치가 애피타이트(appetite)였고, 그때 예산의 단위는 시간이었습니다 ([3장: 경계 정하기](https://basecamp.com/shapeup/1.2-chapter-03)). 유한한 자원이 시간 하나가 아니게 되었다면, 폐기해야 할 것은 그 장치가 아니라 그 장치가 세는 단위입니다. 다음 장에서 애피타이트를 세 자원의 예산으로 다시 씁니다.
-
+And this is exactly where Shape Up comes back in. The original was, from the start, a book about treating a finite resource as a budget. The device for setting that budget was appetite, and back then the budget's unit was time ([Chapter 3: Set Boundaries](https://basecamp.com/shapeup/1.2-chapter-03)). If the finite resource is no longer time alone, what has to be discarded is not the device but the unit it counts in. The next chapter rewrites appetite as a budget across all three resources.

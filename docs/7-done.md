@@ -1,52 +1,51 @@
-# 7장: 검증·완료의 기준
+# Verification and the Definition of Done
 
-원작이 정한 완료의 정의는 한 문장입니다. 완료란 배포되었다는 뜻입니다. 사이클이 끝날 때 팀은 자기 작업을 배포하고, 작은 프로젝트 여럿을 맡은 팀이라면 사이클 안에서 준비되는 대로 내보냅니다 ([10장: 책임 넘기기](https://basecamp.com/shapeup/3.1-chapter-10)). 다음 사람의 대기열로 넘기는 것은 완료가 아니라는 선언이었습니다.
+The original's definition of done is one sentence: done means deployed. At the end of the cycle the team deploys its own work, and a team carrying several small projects ships them inside the cycle as they become ready ([Chapter 10: Hand Over Responsibility](https://basecamp.com/shapeup/3.1-chapter-10)). It was a declaration that handing work to the next person's queue is not done.
 
-이 정의는 사람이 코드를 직접 쓰고 직접 돌려 보았다는 전제 위에서만 충분했습니다. 생성이 끝났고 테스트도 초록불인데 그 코드를 아무도 읽지 않았다면, 우리는 이것을 완료라고 부를 수 있을까요.
+That definition was sufficient only on the premise that a person wrote the code themselves and ran it themselves. If generation is finished and the tests are green but nobody has read the code, can we call that done?
 
-## 힐 차트 → 위임 가능성 지도
+## Hill Chart → Delegability Map
 
-원작에는 진행 상황을 보여 주는 도구가 하나 있습니다. 힐 차트(hill chart)입니다. 모든 작업에는 두 국면이 있습니다. 어떤 접근을 취할지 알아내는 오르막(uphill), 그리고 관련된 일이 전부 눈에 들어와 실행만 남은 내리막(downhill)입니다. 각 스코프가 언덕의 어디쯤 있는지 점으로 찍어 두면 진척을 묻지 않고도 상황이 보입니다 ([13장: 진행 상황 보여주기](https://basecamp.com/shapeup/3.4-chapter-13)).
+The original has one tool for showing progress: the hill chart. Every task has two phases — the uphill, where you're figuring out what approach to take, and the downhill, where everything involved is in view and only execution remains. Plot each scope as a dot somewhere on the hill and you can see the situation without asking for a status update ([Chapter 13: Show Progress](https://basecamp.com/shapeup/3.4-chapter-13)).
 
-VDLC는 같은 차트의 용도를 바꿉니다. 진행 보고 도구였던 것이 인간과 에이전트 사이의 업무 분배 도구가 됩니다. 오르막에 있는 스코프는 미지가 남아 있다는 뜻이고, 미지가 남아 있다면 사람의 판단이 필요하므로 에이전트에게 완전히 위임하지 않습니다. 내리막에 있는 스코프는 의도가 확정되었다는 뜻이고, 확정되었다면 실행은 통째로 위임할 수 있습니다 ([VDLC 주간 사이클](https://vdlc.roboco.io/ko/cycle)).
+VDLC changes what the same chart is for. What was a progress-reporting tool becomes a tool for dividing work between humans and agents. A scope on the uphill means unknowns remain, and if unknowns remain, human judgment is required, so it is not fully delegated to an agent. A scope on the downhill means the intent is settled, and if it is settled, execution can be handed over whole ([VDLC weekly cycle](https://vdlc.roboco.io/ko/cycle)).
 
-그래서 점을 내리막으로 옮기는 행위의 무게도 달라집니다. 원작에서 그것은 "이제 어떻게 할지 알겠다"는 보고였지만, VDLC에서 그것은 "이 스코프의 의도가 컨텍스트 문서에 완결적으로 기술되었다"는 선언입니다. 머릿속에서만 풀린 것은 내리막이 아닙니다. 적히지 않은 이해는 에이전트에게 전달되지 않으므로, 여기서 판정 기준은 담당자의 확신이 아니라 문서입니다.
+That changes the weight of moving a dot over the crest as well. In the original it was a report — "I know how to do this now." In VDLC it is a declaration: "the intent of this scope has been described completely in the context documents." Something solved only inside your head is not downhill. Understanding that is not written down does not reach the agent, so the test here is the document, not the owner's confidence.
 
-## QA는 가장자리에서 검증 게이트로
+## QA Moves from the Edges to the Verification Gate
 
-원작에서 QA는 가장자리를 맡는 역할이었습니다. 메인 플로우가 동작하는지는 만든 사람이 이미 확인했으니 QA는 예외 상황을 찾는 데 집중하고, 거기서 나온 이슈는 기본적으로 선택 항목(nice-to-have)으로 들어온 뒤 심각한 것만 필수 항목(must-have)으로 올라갑니다.
+In the original, QA was the role that took the edges. The builder had already confirmed that the main flow works, so QA concentrated on finding exceptional situations, and the issues it surfaced came in as nice-to-haves by default, with only serious ones promoted to must-have.
 
-이 분업 전체가 전제 하나에 얹혀 있습니다. 사람 구현자가 메인 플로우를 이미 손으로 통과해 보았다는 전제입니다. 에이전트가 생성한 코드에는 그 전제가 없어서, 아무도 한 번도 밟아 보지 않은 메인 플로우가 존재할 수 있습니다. 그래서 VDLC에서 검증은 남는 시간에 하는 보조 활동이 아니라 명시적 단계로 승격되고, 5장에서 본 Day 4 하루 전체가 여기에 배정됩니다. 이날은 신규 코딩이 금지되며 검증 중 발견된 결함의 수정만 허용됩니다.
+That whole division of labor rests on a single premise: that a human implementer has already walked the main flow by hand. Agent-generated code carries no such premise, so a main flow can exist that nobody has ever stepped through. That is why verification in VDLC is promoted from a side activity done with leftover time to an explicit stage, with all of Day 4 from Chapter 5 assigned to it. New coding is banned that day; only fixes for defects found during verification are allowed.
 
-게이트에서 확인하는 항목은 다섯입니다.
+The gate checks five items.
 
-- 피치가 적어 둔 문제가 실제로 해소되었는가 (베이스라인(baseline) 대비 비교)
-- 제외 항목 위반이 없는가
-- 메인 플로우를 사람이 직접 검증했는가
-- 엣지 케이스 자동 테스트가 통과하는가
-- Done = Deployed, 곧 실제 환경에 배포되었는가
+- Has the problem the pitch wrote down actually been resolved (compared against the baseline)?
+- Are there no no-go violations?
+- Has a human verified the main flow directly?
+- Do the automated edge-case tests pass?
+- Done = Deployed — is it deployed to the real environment?
 
-2장에서 첫 번째 병목으로 꼽았던 것이 프로세스 수준에서 흡수되는 자리가 여기입니다. AI 도입도가 높은 팀에서 PR 리뷰 시간이 91% 늘었다는 수치는, 검증을 일정에 자리 없는 활동으로 두었을 때 그 부담이 어디로 밀려나는지를 보여 줍니다. 하루를 배정한다는 것은 그 초과분을 저녁 시간이 아니라 사이클 안에서 치르게 만든다는 뜻입니다.
+This is where the first bottleneck named in Chapter 2 gets absorbed at the process level. The figure that PR review time rose 91% at teams with high AI adoption shows where the burden gets pushed when verification is left as an activity with no place in the schedule. Assigning it a day means paying that overage inside the cycle rather than in the evening.
 
-## 스코프 해머링 → 컨텍스트 해머링
+## Scope Hammering → Context Hammering
 
-고정된 기간 안에 끝내려면 남은 일을 깎아야 합니다. 원작은 이 일을 "잘라낸다"보다 센 말로 부릅니다. 스코프 해머링(scope hammering)입니다. 이것이 정말 필수 항목인지 거듭 되묻고, 아니라고 판단된 것에 물결표를 붙여 선택 항목으로 내려보내는 일입니다 ([14장: 언제 멈출지 결정하기](https://basecamp.com/shapeup/3.5-chapter-14)).
+Finishing inside a fixed period means cutting what's left. The original uses a stronger word than "trim" for this work: scope hammering. You ask again and again whether something is really a must-have, and anything judged not to be gets a tilde and is knocked down to nice-to-have ([Chapter 14: Decide When to Stop](https://basecamp.com/shapeup/3.5-chapter-14)).
 
-되묻는 행위는 그대로 남지만 깎는 대상이 바뀝니다. 코드를 지워 봐야 같은 의도 문서가 남아 있는 한 다음 생성에서 그것이 다시 돌아오기 때문입니다. 그래서 VDLC의 해머링은 코드가 아니라 컨텍스트 문서를 두들깁니다. 유스케이스 하나를 잘라내기로 했다면 구현을 삭제하는 것이 아니라 의도 문서에서 그 항목을 내리고 다시 생성합니다. 컨텍스트 해머링이라는 이름이 붙은 이유입니다.
+The asking survives intact, but what gets cut changes. Deleting code accomplishes nothing as long as the same intent document remains, because the next generation brings it right back. So hammering in VDLC pounds on the context document, not the code. If you've decided to cut a use case, you don't delete the implementation — you take the item out of the intent document and regenerate. Hence the name context hammering.
 
-완료의 정의에도 조건이 하나 붙습니다. Done = Deployed에 재생성 가능(regenerable)이 더해집니다. 컨텍스트 문서만으로 같은 것을 다시 만들어 낼 수 있어야 진짜 완료라는 것입니다. 5장에서 본 쿨다운의 재생성 검증이 이 조건을 매주 실측합니다. 배포는 되었는데 재생성이 실패한다면, 그 사이클은 완료된 것이 아니라 컨텍스트 부채를 남긴 것입니다.
+The definition of done takes on a condition too. Regenerable is added to Done = Deployed: it is truly done only if the same thing can be built again from the context documents alone. The regeneration verification in cool-down from Chapter 5 measures this condition every week. If it deployed but regeneration fails, that cycle did not complete — it left context debt behind.
 
-## 언제 멈출까
+## When to Stop
 
-그래도 시간보다 할 일이 많다는 사실은 변하지 않습니다. 원작이 내놓은 답은 비교의 방향을 바꾸는 것이었습니다. 이상적인 완성형을 올려다보며 비교하지 말고, 베이스라인 — 이 기능이 없는 오늘 고객이 쓰고 있는 답답한 우회 방법 — 과 견주어 내려다보라는 것입니다. 지금 만든 것이 그것보다 나으면 출시할 수 있습니다.
+Even so, the fact that there is more to do than there is time does not change. The original's answer was to change the direction of comparison. Don't look up and compare against an ideal finished version; look down and compare against the baseline — the awkward workaround customers are living with today, without this feature. If what you've built beats that, you can ship it.
 
-이 기준은 구현이 얼마나 싼지와 아무 상관이 없습니다. 고객이 지금보다 나아지는가만 묻기 때문입니다. 그래서 원작의 답 가운데 이 대목은 손댈 것이 없고, 바뀐 것은 유혹의 크기뿐입니다. 예전에는 더 만들자는 제안에 몇 주라는 가격표가 붙어 있어서 자연히 걸러졌지만, 이제는 한 시간이면 되니 굳이 멈출 이유를 찾기 어렵습니다. 2장에서 인용한 Jason Fried의 문장이 여기서 다시 필요해집니다. 속도도, 커밋 수도, 투입한 인원 수도 제품을 본질적으로 더 낫게 만들지는 않는다는 말입니다. 더 만들 수 있다는 것은 더 만들어야 할 이유가 아닙니다.
+This standard has nothing to do with how cheap implementation is, because it asks only whether the customer ends up better off than they are now. So this part of the original's answer needs no revision; the only thing that changed is the size of the temptation. Proposals to build more used to carry a price tag of weeks, which filtered them naturally. Now it takes an hour, and it's hard to find a reason to stop. Jason Fried's line, quoted in Chapter 2, is needed again here: neither speed, nor commit count, nor headcount makes a product fundamentally better. That you *can* build more is not a reason you *should*.
 
-## 맺음말
+## Closing
 
-구현 비용은 실제로 무너졌지만 모든 자리에서 균일하게 무너지지는 않았고, 그 자리에 검증과 주의력과 복잡도라는 새 희소 자원이 들어섰습니다(1부). 애피타이트와 셰이핑은 그래서 폐기되기는커녕 더 무거워졌고, 다만 애피타이트는 시간 하나가 아니라 인간 주의력과 컴퓨트라는 두 통화로, 셰이핑은 문서가 아니라 프로토타입 라운드를 내장한 활동으로 내용물을 바꿨습니다(2부). 사이클과 베팅과 완료 판정은 4일 빌드에 1일 쿨다운이라는 주간 심박으로 재조립되었고, 그 안에서 서킷 브레이커는 반송 장치로, 힐 차트는 위임 지도로, QA는 게이트로 자리를 옮겼습니다(3부).
+The cost of implementation really did collapse, but it did not collapse uniformly everywhere, and new scarce resources — verification, attention, and complexity — moved into the vacated space (Part 1). Appetite and shaping were therefore not discarded but made heavier, with appetite changing its contents from a single currency of time to two, human attention and compute, and shaping changing from documentation into an activity with prototype rounds built in (Part 2). Cycle, bet, and the verdict on done were reassembled around a weekly heartbeat of a four-day build plus a one-day cool-down, and within it the circuit breaker moved into position as a return mechanism, the hill chart as a delegability map, and QA as a gate (Part 3).
 
-여기까지가 경계선을 긋는 일이었습니다. 다음 걸음은 이 선 위에 세워진 운영 규칙을 실제 한 주에 얹어 보는 것이고, 규칙의 전체 정의는 [VDLC 주간 사이클](https://vdlc.roboco.io/ko/cycle) 문서에 있습니다. 월요일 아침에 베팅하고 목요일에 게이트를 세우고 금요일에 재생성을 시켜 보는 것으로 충분한 시작입니다.
+Drawing that boundary line is as far as this goes. The next step is to lay the operating rules built on that line onto a real week, and the full definition of those rules lives in the [VDLC weekly cycle](https://vdlc.roboco.io/ko/cycle) document. Betting on Monday morning, standing up the gate on Thursday, and asking for a regeneration on Friday is a sufficient start.
 
-원작의 [결론](https://basecamp.com/shapeup/3.7-conclusion)은 방법론을 통째로 도입하지 않더라도 언어와 개념 몇 개는 가져다 쓸 수 있기를 바란다는 말로 끝납니다. 이 가이드도 같은 자리에서 끝냅니다. 한 가지만 덧붙이면, 바이브 코딩이라는 이름을 붙였다가 1년 만에 내려놓은 Karpathy와 Shape Up의 사이클이 끝났다고 먼저 말한 DHH가 정반대 방향에서 출발해 같은 결론에 닿았다는 사실입니다. 만드는 일은 넘겨줄 수 있지만 품질의 기준은 사람이 붙들고 있어야 한다는 것. Shape Up이 처음부터 하던 이야기이기도 합니다.
-
+The original's [conclusion](https://basecamp.com/shapeup/3.7-conclusion) ends with the hope that you can borrow some of its language and concepts even if you don't adopt the whole methodology. This guide ends in the same place. One thing to add: Karpathy, who coined the name vibe coding and set it down a year later, and DHH, who was first to say Shape Up's cycle was over, set out from opposite directions and arrived at the same conclusion. Building can be handed off, but the standard of quality has to stay in human hands. Which is what Shape Up was saying from the beginning.

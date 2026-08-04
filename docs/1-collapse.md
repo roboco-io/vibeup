@@ -1,38 +1,37 @@
-# 1장: 구현 비용의 붕괴
+# The Collapse of Implementation Cost
 
-2025년 2월, Andrej Karpathy는 새로운 코딩 방식을 하나 소개하는 트윗을 올렸습니다. "바이브에 완전히 몸을 맡기고, 지수적 성장을 받아들이고, 코드가 존재한다는 사실조차 잊는(fully give in to the vibes, embrace exponentials, and forget that the code even exists)" 방식이라는 것이었습니다. 그는 에이전트가 내놓은 diff를 읽지 않고 전부 수락하고, 에러가 나면 메시지를 그대로 붙여넣는다고 적었습니다. 이 트윗은 조회 450만 회를 넘기며 바이브 코딩(vibe coding)이라는 이름을 남겼습니다 ([용어의 이력](https://www.coderabbit.ai/blog/a-semantic-history-how-the-term-vibe-coding-went-from-a-tweet-to-prod)).
+In February 2025, Andrej Karpathy posted a tweet introducing a new way of coding — one where you "fully give in to the vibes, embrace exponentials, and forget that the code even exists." He wrote that he accepts every diff the agent produces without reading it, and that when an error comes up he just pastes the message straight back in. The tweet passed 4.5 million views and left behind a name: vibe coding ([a history of the term](https://www.coderabbit.ai/blog/a-semantic-history-how-the-term-vibe-coding-went-from-a-tweet-to-prod)).
 
-중요한 것은 이것이 냉소나 농담이 아니었다는 점입니다. 코드를 한 줄도 읽지 않고 전부 수락하는 방식으로도 무언가가 실제로 완성되는 순간이 왔다는 관찰이었습니다. 그렇다면 정확히 무엇이 그만큼 싸진 것인지부터 따져 보아야 합니다.
+What matters is that this was neither cynicism nor a joke. It was an observation that a moment had arrived in which something real actually gets finished even when you accept everything without reading a single line. Which means the first thing to work out is exactly what became that cheap.
 
-## 무엇이 실제로 싸졌는가
+## What Actually Got Cheaper
 
-가장 확실하게 싸진 것은 **첫 버전을 존재하게 만드는 비용**입니다. 빈 화면에서 동작하는 무언가까지 가는 거리, 프로토타입, 보일러플레이트, 익숙하지 않은 라이브러리의 첫 연결. 예전에는 하루가 걸리던 이 구간이 몇 분으로 줄었습니다.
+What got cheaper beyond doubt is **the cost of bringing a first version into existence**. The distance from a blank screen to something that runs; prototypes; boilerplate; the first connection to an unfamiliar library. A stretch that used to take a day now takes minutes.
 
-그런데 더 중요한 변화는 그 옆에 있습니다. **버리는 비용도 함께 0에 수렴했다는 것**입니다. 두 시간을 들여 만든 접근법은 아까워서 붙들게 되지만, 20분 만에 나온 접근법은 미련 없이 지우고 다른 방향을 다시 세워 볼 수 있습니다. 하나를 고르기 전에 세 가지를 실제로 만들어 보는 일이 처음으로 현실적인 선택지가 되었습니다. 이 대목은 3부에서 무엇에 걸지 정하는 방식을 다시 다룰 때 돌아올 지점입니다.
+But the more important change sits right next to it: **the cost of throwing work away collapsed toward zero as well.** An approach you spent two hours on is one you cling to because discarding it hurts; an approach that took twenty minutes you can delete without regret and rebuild in another direction. Actually building three things before choosing one became, for the first time, a realistic option. This is a point we will return to in Part 3, when we revisit how you decide what to bet on.
 
-이 변화는 조직 수준의 텔레메트리에서도 관측됩니다. Faros AI가 1,255개 팀과 개발자 1만여 명의 데이터를 분석한 결과, AI 도입도가 높은 팀은 머지된 PR이 98% 늘었습니다 ([Faros AI](https://www.faros.ai/blog/best-ai-coding-agents-2026)). 코드가 만들어져 들어오는 양 자체는 실제로 두 배 가까이 뛴 셈입니다.
+The shift shows up in organization-level telemetry too. Faros AI analyzed data from 1,255 teams and roughly 10,000 developers and found that teams with high AI adoption merged 98% more PRs ([Faros AI](https://www.faros.ai/blog/best-ai-coding-agents-2026)). The sheer volume of code being produced and coming in has, in fact, nearly doubled.
 
-## 무엇은 싸지지 않았는가
+## What Did Not Get Cheaper
 
-여기서 이야기를 멈추면 결론은 하나뿐입니다. 계획할 시간에 그냥 만들면 된다는 것입니다. 그런데 같은 시기의 가장 단단한 실측 하나가 정확히 반대 방향을 가리킵니다.
+If the story stopped here, there would be only one conclusion: build instead of planning. And yet one of the most solid measurements from the same period points in exactly the opposite direction.
 
-METR은 2025년 7월, 숙련된 오픈소스 개발자 16명에게 자신이 오래 유지보수해 온 저장소의 실제 이슈 246건을 맡기고 무작위 대조 실험을 했습니다. AI 도구 사용이 허용된 조건에서 이들은 **19% 더 느리게** 작업을 마쳤습니다. 그런데 더 눈여겨볼 것은 그다음입니다. 실험이 끝난 뒤에도 참가자들은 자신이 20%가량 **빨라졌다고** 느끼고 있었습니다. 체감과 실측 사이에 39%p의 인식 격차가 벌어진 것입니다 ([METR, arXiv:2507.09089](https://arxiv.org/abs/2507.09089)).
+In July 2025, METR ran a randomized controlled trial in which 16 experienced open-source developers worked on 246 real issues in repositories they had maintained for a long time. Under the condition where AI tools were allowed, they finished their tasks **19% more slowly**. What deserves closer attention is what came next. Even after the experiment ended, participants believed they had been about 20% **faster**. A 39-percentage-point gap had opened between perception and measurement ([METR, arXiv:2507.09089](https://arxiv.org/abs/2507.09089)).
 
-이 결과는 앞 절을 뒤집지 않습니다. 두 결과가 갈라지는 지점은 조건입니다. 생성이 빨라진 것은 사실이고, 그 이득은 코드를 읽지 않고 수락할 때 온전히 손에 들어옵니다. 그러나 남이 오래 책임져 온 코드베이스에서, 들어온 변경을 이해하고 검토하고 자기 이름으로 머지해야 하는 순간, 줄어들었던 비용이 다른 항목으로 되살아납니다. 즉 "구현 비용이 0에 수렴한다"는 명제는 **조건부 진실**입니다. 검증하지 않는 만큼만 0이고, 책임지고 확인하기 시작하는 만큼 값이 돌아옵니다.
+This result does not overturn the previous section. The two diverge on conditions. Generation did get faster, and that gain lands fully in your hands when you accept code without reading it. But in a codebase someone has long been responsible for, at the moment you have to understand an incoming change, review it, and merge it under your own name, the cost that had been removed comes back under a different line item. In other words, "the cost of implementation converges on zero" is a **conditional truth**. It is zero exactly to the extent that you do not verify, and the bill returns to the extent that you start checking and taking responsibility.
 
-그리고 39%p의 격차가 말해 주는 것은, 그 되살아난 비용을 우리가 스스로 잘 보지 못한다는 사실입니다. 프로세스를 다시 설계할 때 체감을 근거로 삼으면 안 되는 이유가 여기에 있습니다.
+And what the 39-point gap tells us is that we are bad at seeing that returned cost ourselves. This is precisely why perceived speed is not a safe basis for redesigning a process.
 
-## 명명자의 후퇴
+## The Namer's Retreat
 
-같은 결론에 다른 경로로 도달한 사람이 이 용어를 만든 당사자입니다. 트윗으로부터 1년쯤 지난 2026년 2월, Karpathy는 바이브 코딩이라는 프레이밍을 내려놓고 에이전틱 엔지니어링(agentic engineering)으로 자리를 옮겼습니다. 도구가 나빠져서가 아니라, 도구가 품질 임계점을 넘어서면서 이 프레이밍이 오히려 사람들을 잘못된 곳으로 데려가기 시작했기 때문입니다.
+The person who arrived at the same conclusion by another route is the one who coined the term. About a year after the tweet, in February 2026, Karpathy set the vibe coding framing down and moved to agentic engineering. Not because the tools got worse, but because as the tools crossed a quality threshold, the framing began leading people somewhere wrong.
 
-> "바이브 코딩은 바닥을 끌어올리는 일입니다. 에이전틱 엔지니어링은 전문 소프트웨어의 품질 기준선을 지키는 일입니다. 바이브 코딩을 했다는 이유로 취약점을 들여놓는 것은 허용되지 않습니다. 여러분은 여전히 자신의 소프트웨어에 책임이 있습니다."
+> "Vibe coding is about raising the floor. Agentic engineering is about holding the quality baseline of professional software. Having vibe coded is not a license to let vulnerabilities in. You are still responsible for your own software."
 
-> "지금 에이전트는 인턴 같은 존재입니다. 미감, 판단, 취향, 감독은 여전히 여러분이 쥐고 있어야 합니다."
+> "Agents today are like interns. Taste, judgment, sensibility, and supervision still have to stay with you."
 >
 > — Andrej Karpathy ([Sequoia Ascent 2026](https://karpathy.bearblog.dev/sequoia-ascent-2026/))
 
-1년 사이에 벌어진 이 용어의 이동 자체가 하나의 증언입니다. 이 방식으로 만들 수 있는 것의 하한선은 분명히 올라갔지만, 만들어진 것을 붙들고 있어야 하는 자리는 사라지지 않았고 다만 위치가 바뀌었습니다. 명명자 본인이 "책임"과 "감독"이라는 단어로 그 새 위치를 가리키고 있는 셈입니다.
+The migration of the term over a single year is itself a piece of testimony. The floor of what can be built this way has clearly risen, but the seat where someone has to hold onto what was built did not disappear — it only changed location. The namer himself is pointing at that new location with the words "responsibility" and "supervision."
 
-그렇다면 비용은 정확히 어디로 옮겨 간 것일까요. 다음 장에서 새로 희소해진 세 자원을 하나씩 짚어 보겠습니다.
-
+So where exactly did the cost move to? In the next chapter we will work through the three resources that have newly become scarce.

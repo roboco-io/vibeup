@@ -1,50 +1,49 @@
-# 5장: 4일 빌드 + 1일 쿨다운
+# 4-Day Build + 1-Day Cool-down
 
-원작이 사이클(cycle) 길이로 6주를 고른 근거는 기간의 절대값이 아니라 두 조건의 균형이었습니다. 의미 있는 무언가를 처음부터 끝까지 만들 수 있을 만큼 길고, 시작부터 모두가 마감이 다가오는 것을 체감할 만큼 짧은 기간이라는 것입니다 ([1장: 소개](https://basecamp.com/shapeup/0.3-chapter-01)).
+The original's reason for choosing six weeks as the cycle length was never the absolute number but the balance of two conditions: long enough to build something meaningful start to finish, and short enough that everyone feels the deadline looming from the very beginning ([Chapter 1: Introduction](https://basecamp.com/shapeup/0.3-chapter-01)).
 
-그 균형은 사람이 코드를 쓴다는 전제 위에서 맞춰진 것입니다. 만드는 데 드는 시간이 6주를 채웠기 때문에 6주가 "완성할 만큼 긴" 기간일 수 있었습니다. 조건 두 개는 그대로 두고 전제만 빼면 답이 달라집니다.
+That balance was struck on the premise that people write the code. Six weeks could be the "long enough to finish" period because building filled six weeks. Keep the two conditions and remove only the premise, and the answer changes.
 
-## 압축의 근거와 한계
+## The Grounds for Compression, and Its Limits
 
-먼저 정직하게 짚을 것이 있습니다. 사이클이 짧아진다는 주장은 지금 넘쳐나지만 대부분 벤더와 컨설팅 블로그이고, "6~12개월이 6~12주로" 같은 문장은 검증된 벤치마크가 아닙니다 ([SDLC in the AI era](https://www.groovyweb.co/blog/sdlc-ai-era-software-development-2026)). 1차 출처에 가장 가까운 수치는 Google의 Sundar Pichai가 공개 석상에서 밝힌 것으로 보도된 엔지니어링 속도 약 10% 향상이고, 이는 사내 코드의 4분의 1이 AI 지원으로 작성되는 상태에서 나온 숫자로 전해집니다. 10배 서사와는 자릿수가 다릅니다. 1장에서 본 METR의 실측까지 나란히 놓으면, 구현이 몇십 배 빨라졌으니 사이클도 몇십 분의 일이 된다는 산술은 성립하지 않습니다.
+Something has to be said honestly first. Claims that cycles are getting shorter are everywhere right now, but most of them come from vendors and consulting blogs, and sentences like "six to twelve months becomes six to twelve weeks" are not validated benchmarks ([SDLC in the AI era](https://www.groovyweb.co/blog/sdlc-ai-era-software-development-2026)). The figure closest to a primary source is the roughly 10% improvement in engineering velocity that Google's Sundar Pichai is reported to have stated publicly, a number said to come from a state in which about a quarter of the company's code is written with AI assistance. That is an order of magnitude away from the 10x narrative. Set METR's measurements from Chapter 1 alongside it, and the arithmetic that says implementation got tens of times faster, therefore cycles become a fraction as long, does not hold.
 
-그럼에도 압축이 성립하는 이유는 다른 산술에 있습니다. 사이클 길이를 정하는 변수 자체가 바뀌었기 때문입니다. 구현이 분·시간 단위로 끝나면 남는 변수는 빌드 시간이 아니라 셰이핑과 검증에 쓰는 사람의 시간입니다. 2장에서 병목이 검증과 리뷰로 옮겨 갔다고 한 이야기가 여기서 타임박스를 다시 재야 할 이유로 되돌아옵니다.
+The reason compression holds anyway lies in different arithmetic. The variable that sets cycle length has itself changed. When implementation finishes in minutes or hours, what remains is not build time but the human time spent on shaping and verification. The claim from Chapter 2 that the bottleneck moved to verification and review comes back here as the reason to re-measure the timebox.
 
-여기에 전제 하나가 더 붙습니다. 사이클은 작업 시간의 추정이 아니라 재베팅 리듬이라는 것입니다. 배포는 사이클이 끝날 때 몰아서가 아니라 사이클 안에서 슬라이스 단위로 계속 일어나므로, 사이클을 줄여서 사는 것은 더 빠른 출시가 아니라 더 잦은 의사결정입니다.
+One more premise attaches to this. A cycle is not an estimate of working time but a re-betting rhythm. Deployment does not happen in a lump at the end of the cycle but continuously, slice by slice, inside it — so what you buy by shortening the cycle is not faster shipping but more frequent decisions.
 
-## 한 주가 한 심박: 4일 + 1일
+## One Week, One Heartbeat: 4 Days + 1 Day
 
-로보코의 VDLC는 주를 일로 치환하되 심박(heartbeat)은 달력 주에 정렬합니다. 4 근무일 빌드에 1일 쿨다운(cool-down), 한 주가 한 심박입니다. 월요일 아침에 베팅하고 금요일에 쿨다운으로 한 주를 닫습니다 ([VDLC 주간 사이클](https://vdlc.roboco.io/ko/cycle)).
+Roboco's VDLC substitutes days for weeks while aligning the heartbeat to the calendar week: a four-working-day build plus a one-day cool-down, one week per heartbeat. You bet on Monday morning and close the week with cool-down on Friday ([VDLC weekly cycle](https://vdlc.roboco.io/ko/cycle)).
 
-| Day | 하는 일 | 완료 조건 |
+| Day | What happens | Completion condition |
 |---|---|---|
-| Day 0 (월 아침) | 베팅 테이블. 피치 검토, 병렬 베팅 배분 | 각 베팅에 이중 예산(주의력·컴퓨트) 명시 |
-| Day 1 (월) | 수직 슬라이스 하나를 배포 가능한 상태로 통합 | 실제 환경에서 동작하는 슬라이스 1개 |
-| Day 2–3 (화·수) | 위임 가능성 지도를 보고 위임 | 필수 스코프 전부가 내리막에 진입 |
-| Day 4 (목) | 검증 게이트. 신규 코딩 금지 | Done = Deployed 판정 |
-| Day 5 (금) | 쿨다운. 재생성 검증과 다음 베팅 준비 | 재생성 성공 또는 부채 역이전 완료 |
+| Day 0 (Mon morning) | Betting table. Review pitches, allocate parallel bets | Dual-currency appetite (attention, compute) stated for each bet |
+| Day 1 (Mon) | Integrate one vertical slice into a deployable state | 1 slice working in the real environment |
+| Day 2–3 (Tue, Wed) | Delegate by reading the delegability map | All must-have scope has entered the downhill |
+| Day 4 (Thu) | Verification gate. No new coding | Done = Deployed verdict |
+| Day 5 (Fri) | Cool-down. Regeneration verification and preparation for the next bet | Regeneration succeeds, or debt reverse-transfer is complete |
 
-Day 1이 하는 일은 새로운 발명이 아닙니다. 이어지지 않은 조각을 쌓아 두지 말고 의미 있는 한 덩어리를 먼저 통합해 보라는 원작의 조언 ([11장: 한 조각을 끝내기](https://basecamp.com/shapeup/3.2-chapter-11))을 하루짜리 규칙으로 못 박은 것입니다. Day 4에 코딩을 금지하는 것도 검증이 남는 시간에 하는 일이 아니라 배정된 단계임을 달력으로 강제하려는 것입니다.
+What Day 1 does is no new invention. It nails down as a one-day rule the original's advice not to pile up disconnected pieces but to integrate one meaningful chunk first ([Chapter 11: Get One Piece Done](https://basecamp.com/shapeup/3.2-chapter-11)). Banning coding on Day 4 likewise exists to force onto the calendar the fact that verification is an allocated stage, not something you do with the time left over.
 
-쿨다운 비율은 원작의 3대 1에서 4대 1로 옮겨 갔습니다. 쿨다운에서 할 일 자체가 줄어서가 아니라, 그 일을 실행하는 쪽도 에이전트여서 하루면 충분하기 때문입니다.
+The cool-down ratio moved from the original's three-to-one to four-to-one. Not because there is less to do in cool-down, but because an agent executes that work too, so a day is enough.
 
-## 사이클 길이는 캘리브레이션 대상
+## Cycle Length Is Something You Calibrate
 
-한 주는 기본값이지 바닥이 아닙니다. 셰이핑과 합의에 리더십 승인이 필요한 엔터프라이즈에는 8일 빌드에 2일 쿨다운이라는 상향 변형이, 검증 자산이 성숙한 팀이나 솔로에게는 2일 빌드에 1일 쿨다운이라는 하향 변형이 있습니다.
+One week is a default, not a floor. Enterprises whose shaping and alignment require leadership sign-off have an upward variant of an eight-day build with a two-day cool-down; teams with mature verification assets, and solo builders, have a downward variant of a two-day build with a one-day cool-down.
 
-길이를 정하는 변수는 세 가지입니다. 첫째는 검증 자산 성숙도로, 에이전트 교차 리뷰와 자동 평가가 검증을 흡수할수록 사람이 지키는 게이트가 짧아집니다. 둘째는 정보 도착 속도입니다. 재베팅의 가치는 새 정보가 도착하는 속도에 묶여 있어서, 정보보다 잦은 재베팅은 같은 정보로 회의만 늘립니다. 셋째는 이해 대역폭입니다. 사람이 산출물을 이해해야 환류가 실질이 되는데, 이해와 큐레이션의 속도는 컴퓨트로 압축되지 않습니다.
+Three variables set the length. The first is the maturity of your verification assets: the more that agent cross-review and automated evaluation absorb verification, the shorter the gate a human has to hold. The second is the arrival rate of information. The value of re-betting is tied to how fast new information arrives, so re-betting more often than information arrives only adds meetings held on the same information. The third is comprehension bandwidth. Feedback becomes real only when a person understands the output, and the speed of understanding and curation does not compress with compute.
 
-그래서 하한을 숫자로 박아 두지 않고 절차로 관리합니다. 쿨다운마다 셰이핑에 쓴 시간과 컨텍스트 브레이커 발동률을 기록해 두고, 브레이커가 두 사이클 연속으로 잦으면 셰이핑 시간이 부족하다는 신호이므로 한 단계 긴 변형으로 늘립니다. 반대로 쿨다운이 계속 한산하고 검증 게이트를 한 번에 통과하는 상태가 유지되면 한 단계 짧은 변형으로 줄입니다.
+So rather than fixing a lower bound as a number, you manage it by procedure. Each cool-down, record the time spent shaping and the context breaker trigger rate; if breakers fire often for two cycles running, that is a signal that shaping time is insufficient, so you lengthen to the next variant up. Conversely, if cool-down stays quiet and the verification gate keeps passing on the first attempt, you shorten to the next variant down.
 
-## 쿨다운은 더 중요해진다
+## Cool-down Becomes More Important
 
-원작에서 쿨다운은 버그를 잡고 미뤄 둔 일을 처리하는 정비 기간이었습니다. VDLC의 쿨다운에는 그 자리에 의식 하나가 들어섭니다. 재생성 검증입니다.
+In the original, cool-down was a maintenance period for fixing bugs and handling deferred work. In VDLC's cool-down, one ritual takes that place: regeneration verification.
 
-이번 사이클의 컨텍스트 문서만을 입력으로 주고 에이전트에게 결과물을 다시 만들게 한 뒤, 그 재생성물이 검증 게이트를 통과하는지 확인합니다. 통과하면 이번 사이클은 부채 없이 닫힙니다. 실패하면 3장에서 이름 붙인 컨텍스트 부채, 곧 코드에만 있고 의도 문서에는 없는 결정이 남아 있다는 뜻이므로, 차이를 분석해 숨은 의도를 문서로 역이전합니다. 역이전이 끝나기 전에는 다음 사이클 베팅이 금지됩니다.
+You give the agent this cycle's context documents as the only input, have it build the deliverable again, and check whether that regenerated output passes the verification gate. If it passes, the cycle closes with no debt. If it fails, it means what Chapter 3 named context debt is still there — decisions that exist only in the code and not in the intent documents — so you analyze the difference and reverse-transfer the hidden intent into the documents. Betting on the next cycle is forbidden until that reverse-transfer is finished.
 
-2장에서 세 번째 병목으로 꼽았던 복잡도 부채가 상환되는 자리가 여기입니다. 상환 시점을 "언젠가 여유 있을 때"로 두지 않고 다음 베팅의 선행 조건으로 걸어 두었다는 것이 이 장치의 핵심입니다.
+This is where the complexity debt named as the third bottleneck in Chapter 2 gets repaid. The heart of the mechanism is that the repayment point is not left at "sometime when there's slack" but wired in as a precondition of the next bet.
 
-그리고 쿨다운은 여전히 사람의 회복 기간이기도 합니다. 서문과 2장에서 두 번 인용한 DHH의 경고 — 에이전트로 계속 출시하는 도파민 루프가 번아웃 위험을 키운다는 말 — 이 이 대목에서 운영 규칙으로 번역됩니다. 같은 인터뷰에서 그는 반년 전만 해도 AI로 코드를 쓰지 않았지만 지금은 손으로 코드를 거의 쓰지 않는다고 말했습니다. 경고한 당사자조차 그 루프 안에 들어가 있다는 뜻입니다. 개인의 절제로 막을 수 있는 문제가 아니라면, 멈추는 날은 일정에 박혀 있어야 합니다.
+And cool-down is still a recovery period for people. DHH's warning, quoted twice in the introduction and Chapter 2 — that the dopamine loop of shipping continuously with agents raises the risk of burnout — gets translated here into an operating rule. In the same interview he said that half a year earlier he wasn't writing code with AI at all, and that now he barely writes code by hand. Even the person issuing the warning is inside the loop. If this is not a problem individual restraint can solve, then the day you stop has to be fixed in the schedule.
 
-한 주에 한 번 다시 베팅한다면, 그 베팅 테이블에 올라오는 것은 무엇이고 무엇을 기준으로 고르게 될까요. 구현이 싸졌다는 사실은 사이클 길이보다 베팅의 성격을 더 크게 바꿔 놓습니다.
-
+If you re-bet once a week, what comes to that betting table, and by what criteria do you choose? The fact that implementation got cheap changes the character of the bet even more than it changes the length of the cycle.
