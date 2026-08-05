@@ -26,7 +26,24 @@ function sidebar(
 
 export default defineConfig({
   title: "Vibe Up",
-  head: [["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }]],
+  head: [
+    ["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
+    ["meta", { property: "og:type", content: "website" }],
+    ["meta", { property: "og:site_name", content: "Vibe Up" }],
+    ["meta", { property: "og:title", content: "Vibe Up — Shape Up for the Vibe-Coding Era" }],
+    [
+      "meta",
+      {
+        property: "og:description",
+        content:
+          "How shaping, appetite, and cycles get rewritten when the cost of implementation approaches zero. English · 한국어 · 日本語",
+      },
+    ],
+    ["meta", { property: "og:image", content: "https://vibeup.roboco.io/og.png" }],
+    ["meta", { property: "og:image:width", content: "1200" }],
+    ["meta", { property: "og:image:height", content: "630" }],
+    ["meta", { name: "twitter:card", content: "summary_large_image" }],
+  ],
   cleanUrls: true,
   themeConfig: {
     socialLinks: [{ icon: "github", link: "https://github.com/roboco-io/vibeup" }],
