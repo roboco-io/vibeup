@@ -46,7 +46,7 @@ Triggering does not wait for the end of the cycle. If any one of the following t
 2. The compute budget is exhausted while scope marked must-have is still uphill.
 3. The agent has repeated mutually contradictory approaches on the same scope three or more times.
 
-The second condition is a conjunction, not a disjunction. Exhausting the budget alone does not fire it, and having work still uphill while the budget is comfortable is normal. The signal is the combination: everything available has been spent and must-haves are still uphill.
+Must-have here carries over the original's split: scope is divided into must-haves and nice-to-haves, and you ship once the must-haves are done ([Chapter 14: Decide When to Stop](https://basecamp.com/shapeup/3.5-chapter-14)). The second condition is a conjunction, not a disjunction. Exhausting the budget alone does not fire it, and having work still uphill while the budget is comfortable is normal. The signal is the combination: everything available has been spent and must-haves are still uphill.
 
 What has to be produced when the breaker fires is not a failure report but a return memo. It records which intent was unclear and which rabbit hole was left undeclared in the pitch. This memo becomes input to the shaping track and fixes the next pitch. That is the point at which the breaker becomes a learning device rather than a punishment.
 

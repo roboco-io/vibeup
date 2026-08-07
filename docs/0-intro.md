@@ -1,6 +1,6 @@
 # Introduction: Why Shape Up Again, Now
 
-Shape Up, published in 2019, was a book that reduces to a single sentence: decide what to build, in refined form, inside a fixed budget of six weeks. Instead of producing an estimate of how long a piece of work would take, Basecamp set an appetite — a decision about how much time the problem was worth spending. The work of sketching the outline of a solution so that it fits inside that budget was called shaping, and the resulting pitch went to the betting table, where the next cycle was wagered. One principle runs through every one of these devices: fix the time, and flex the scope. The original's full picture is laid out in [Chapter 1: Introduction](https://basecamp.com/shapeup/0.3-chapter-01).
+Shape Up, published in 2019, was a book that reduces to a single sentence: decide what to build, in refined form, inside a fixed budget of six weeks. Instead of producing an estimate of how long a piece of work would take, Basecamp set an appetite ([Chapter 3: Set Boundaries](https://basecamp.com/shapeup/1.2-chapter-03)) — a decision about how much time the problem was worth spending. The work of sketching the outline of a solution so that it fits inside that budget was called shaping ([Chapter 2: Principles of Shaping](https://basecamp.com/shapeup/1.1-chapter-02)), and the resulting pitch ([Chapter 6: Write the Pitch](https://basecamp.com/shapeup/1.5-chapter-06)) went to the betting table ([Chapter 8: The Betting Table](https://basecamp.com/shapeup/2.2-chapter-08)), where the next cycle was wagered. One principle runs through every one of these devices: fix the time, and flex the scope ([Chapter 12: Map the Scopes](https://basecamp.com/shapeup/3.3-chapter-12)). The original's full picture is laid out in [Chapter 1: Introduction](https://basecamp.com/shapeup/0.3-chapter-01).
 
 This guide, *Vibe Up*, asks whether that book still holds after vibe coding — and if it does, what changes. The short answer is that most of the original's principles survive, while a good many of the numbers and mechanisms they were attached to no longer mean what they used to. Drawing that line is what this guide does.
 
@@ -18,7 +18,7 @@ Three parts, seven chapters.
 
 - **Part 1: What Changed** — how far the cost of implementation has actually collapsed and what has not moved, followed by the three resources that have newly become scarce.
 - **Part 2: What Doesn't Change** — why appetite and shaping are not discarded but in fact grow heavier, and how their contents get redefined instead.
-- **Part 3: The New Cycle** — the rhythm the six-week cycle and two-week cool-down compress into, and how betting and the definition of done get rewritten.
+- **Part 3: The New Cycle** — the rhythm the six-week cycle and two-week cool-down ([Chapter 8: The Betting Table](https://basecamp.com/shapeup/2.2-chapter-08)) compress into, and how betting and the definition of done get rewritten.
 
 You can follow this guide without having read Shape Up. Each time an idea from the original appears for the first time, it comes with a short explanation and a link to the relevant chapter of the [free web edition](https://basecamp.com/shapeup). If you already know the original, you can read each chapter simply for the answer to "which device from the book gets inverted, and in which direction."
 

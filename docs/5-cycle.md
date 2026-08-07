@@ -24,6 +24,10 @@ Roboco's VDLC substitutes days for weeks while aligning the heartbeat to the cal
 | Day 4 (Thu) | Verification gate. No new coding | Done = Deployed verdict |
 | Day 5 (Fri) | Cool-down. Regeneration verification and preparation for the next bet | Regeneration succeeds, or debt reverse-transfer is complete |
 
+The Day 0 terms come from the original. A **pitch** is the deliverable of shaping: a proposal document that holds the problem to solve, an outline of the solution, the appetite, and the boundaries of what will not be done (Chapter 4). The **betting table** is where those pitches are laid out and the decision is made about what to build this cycle — not pulling the next ticket from a backlog, but placing budget on pitches as bets; pitches that are not chosen are let go, not carried over. **Allocating parallel bets** is this era's variation: since agents can run several efforts at once, you do not pick a single bet but split the attention and compute budget across two or three. Chapter 6 covers this rebuild in detail.
+
+The **downhill** in the Day 2–3 completion condition is another of the original's metaphors. Its hill chart likens work to a hill: the uphill is where you are still figuring out the approach, and the downhill is where everything has been figured out and only execution remains ([Chapter 13: Show Progress](https://basecamp.com/shapeup/3.4-chapter-13)). Chapter 7 returns to the hill chart itself.
+
 What Day 1 does is no new invention. It nails down as a one-day rule the original's advice not to pile up disconnected pieces but to integrate one meaningful chunk first ([Chapter 11: Get One Piece Done](https://basecamp.com/shapeup/3.2-chapter-11)). Banning coding on Day 4 likewise exists to force onto the calendar the fact that verification is an allocated stage, not something you do with the time left over.
 
 The cool-down ratio moved from the original's three-to-one to four-to-one. Not because there is less to do in cool-down, but because an agent executes that work too, so a day is enough.

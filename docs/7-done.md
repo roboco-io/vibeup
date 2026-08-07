@@ -14,7 +14,7 @@ That changes the weight of moving a dot over the crest as well. In the original 
 
 ## QA Moves from the Edges to the Verification Gate
 
-In the original, QA was the role that took the edges. The builder had already confirmed that the main flow works, so QA concentrated on finding exceptional situations, and the issues it surfaced came in as nice-to-haves by default, with only serious ones promoted to must-have.
+In the original, QA was the role that took the edges. The builder had already confirmed that the main flow works, so QA concentrated on finding exceptional situations, and the issues it surfaced came in as nice-to-haves by default, with only serious ones promoted to must-have ([Chapter 14: Decide When to Stop](https://basecamp.com/shapeup/3.5-chapter-14)).
 
 That whole division of labor rests on a single premise: that a human implementer has already walked the main flow by hand. Agent-generated code carries no such premise, so a main flow can exist that nobody has ever stepped through. That is why verification in VDLC is promoted from a side activity done with leftover time to an explicit stage, with all of Day 4 from Chapter 5 assigned to it. New coding is banned that day; only fixes for defects found during verification are allowed.
 
