@@ -36,6 +36,6 @@ There is also a loop here running back to the first two bottlenecks. The more co
 
 ## What the Three Have in Common
 
-Set the three resources side by side and one thing they share stands out. All three sit on the human side, and all three are finite. Compute grows if you pay more, but the attention available for review, the focus available for judgment, and the capacity to hold a system in your head do not grow when you raise the budget. The place the bottleneck moved to turned out to be a resource that does not scale.
+Set the three resources side by side and one thing they share stands out. All three sit on the human side, and all three are finite. Compute — the machine-side resource that covers token consumption and agent sessions — grows if you pay more, but the attention available for review, the focus available for judgment, and the capacity to hold a system in your head do not grow when you raise the budget. The place the bottleneck moved to turned out to be a resource that does not scale.
 
 And this is exactly where Shape Up comes back in. The original was, from the start, a book about treating a finite resource as a budget. The device for setting that budget was appetite, and back then the budget's unit was time ([Chapter 3: Set Boundaries](https://basecamp.com/shapeup/1.2-chapter-03)). If the finite resource is no longer time alone, what has to be discarded is not the device but the unit it counts in. The next chapter rewrites appetite as a budget across all three resources.
