@@ -1,6 +1,6 @@
 # 서문: 왜 지금 다시 Shape Up인가
 
-2019년에 나온 Shape Up은 한 문장으로 줄이면 "6주라는 시간 예산 안에서 무엇을 만들지 먼저 다듬는다"는 책이었습니다. Basecamp는 이 일에 시간이 얼마나 걸릴지 추정치(estimate)를 내는 대신, 이 문제에 시간을 얼마나 쓸 의향이 있는지를 먼저 정하는 애피타이트(appetite, [원작 3장: 경계 정하기](https://basecamp.com/shapeup/1.2-chapter-03))를 세웠습니다. 그리고 그 예산 안에 들어맞도록 해결책의 윤곽을 미리 잡는 작업을 셰이핑(shaping, [원작 2장: 셰이핑의 원리](https://basecamp.com/shapeup/1.1-chapter-02))이라 부르고, 그 결과물인 피치(pitch, [원작 6장: 피치 쓰기](https://basecamp.com/shapeup/1.5-chapter-06))를 베팅 테이블(betting table, [원작 8장: 베팅 테이블](https://basecamp.com/shapeup/2.2-chapter-08))에 올려 다음 사이클(cycle)을 걸었습니다. 시간을 고정하고 스코프(scope, [원작 12장: 스코프 매핑](https://basecamp.com/shapeup/3.3-chapter-12))를 조정한다는 원칙이 이 모든 장치를 관통합니다. 원작의 전체 그림은 [1장: 소개](https://basecamp.com/shapeup/0.3-chapter-01)에 정리되어 있습니다.
+2019년에 나온 Shape Up은 한 문장으로 줄이면 "6주라는 시간 예산 안에서 무엇을 만들지 먼저 다듬는다"는 책이었습니다. Basecamp는 이 일에 시간이 얼마나 걸릴지 추정치(estimate)를 내는 대신, 이 문제에 시간을 얼마나 쓸 의향이 있는지를 먼저 정하는 [애피타이트](https://basecamp.com/shapeup/1.2-chapter-03)(appetite)를 세웠습니다. 그리고 그 예산 안에 들어맞도록 해결책의 윤곽을 미리 잡는 작업을 [셰이핑](https://basecamp.com/shapeup/1.1-chapter-02)(shaping)이라 부르고, 그 결과물인 [피치](https://basecamp.com/shapeup/1.5-chapter-06)(pitch)를 [베팅 테이블](https://basecamp.com/shapeup/2.2-chapter-08)(betting table)에 올려 다음 사이클(cycle)을 걸었습니다. 시간을 고정하고 [스코프](https://basecamp.com/shapeup/3.3-chapter-12)(scope)를 조정한다는 원칙이 이 모든 장치를 관통합니다. 원작의 전체 그림은 [1장: 소개](https://basecamp.com/shapeup/0.3-chapter-01)에 정리되어 있습니다.
 
 이 가이드 『Vibe Up』은 그 책이 바이브 코딩(vibe coding) 이후에도 유효한지, 유효하다면 무엇이 달라지는지를 다룹니다. 결론부터 말하면 원작의 원리는 대부분 살아남지만, 그 원리가 붙어 있던 숫자와 장치는 상당수 의미가 달라집니다. 이 가이드는 그 경계선을 긋는 일을 합니다.
 
@@ -18,7 +18,7 @@
 
 - **1부: 무엇이 변했나** — 구현 비용이 실제로 어디까지 무너졌고 무엇은 그대로인지 살펴본 뒤, 새로 희소해진 세 자원을 짚습니다.
 - **2부: 변하지 않는 것** — 애피타이트와 셰이핑이 왜 폐기되지 않고 오히려 무거워지는지, 대신 그 내용물이 어떻게 재정의되는지 다룹니다.
-- **3부: 새로운 사이클** — 6주 사이클과 2주 쿨다운(cool-down, [원작 8장: 베팅 테이블](https://basecamp.com/shapeup/2.2-chapter-08))이 어떤 리듬으로 압축되는지, 베팅과 완료 판정이 어떻게 다시 쓰이는지 살펴봅니다.
+- **3부: 새로운 사이클** — 6주 사이클과 2주 [쿨다운](https://basecamp.com/shapeup/2.2-chapter-08)(cool-down)이 어떤 리듬으로 압축되는지, 베팅과 완료 판정이 어떻게 다시 쓰이는지 살펴봅니다.
 
 Shape Up을 읽지 않았어도 이 가이드는 따라올 수 있습니다. 원작 개념이 처음 나올 때마다 짧은 설명을 붙이고, [무료로 공개된 영문 원서](https://basecamp.com/shapeup)의 해당 장으로 링크를 걸어 두었습니다. 원작을 이미 아는 분이라면 각 장에서 "원작의 어떤 장치가 어떤 방향으로 뒤집히는가"만 따라 읽어도 좋습니다.
 
