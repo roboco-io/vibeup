@@ -27,6 +27,8 @@ function sidebar(
 export default defineConfig({
   title: "Vibe Up",
   head: [
+    ["script", { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-9G1SGM9SZQ" }],
+    ["script", {}, "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9G1SGM9SZQ');"],
     ["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:site_name", content: "Vibe Up" }],
